@@ -1,5 +1,4 @@
 import pandas as pd
-import math
 import os
 import sys
 """
@@ -24,34 +23,54 @@ for i in X.columns:
 #print(len(translation))
 check 
 #for i, j in X.iterrows(): 
-  #  if not j.empty:
-#        print(i, j)
- #       print() 
+#  if not j.empty:
+#       print(i, j)
+#       print() 
 """
         
 class Helper:
         
+    ANDROID_VALUES_FOLDER = "values"
+    ANDROID_SEPERATOR = "-"
+    ANDROID_FILE_START = "<resources>"
+    ANDROID_FILE_END = "</resources>"
+    ANDROID_STRING_END = "</string>"
+    ANDROID_STRING_START = "<string name="
+    ANDROID_KEY_END = "\">"
+    KEY = "key"
+    storeKey = ""
+    NEW_LINE = "\n"
+    
     excelFile = pd.read_excel(r'translation.xlsx')
     
     def traverseExcelFile(self):
         for row in excel.itertuples(index=False): 
-            for key, val in row._asdict().items():
-                print(key, val)
+            for key, value in row._asdict().items():
+                if key == self.KEY:
+                    storeKey = key
+                else:
+                    writeTranslation(ANDROID_VALUES_FOLDER, ANDROID_SEPERATOR, key, value)           
     
     def isFileEmpty(self):
         return self.excelFile.empty
     
-    def createDirectory(self, path, lang):
-        directory = os.path.join(path + "-" +lang)
-       # if n#ot checkDirectoryExist(directory):
-        os.mkdir(directory)
-        #createFile(directory, "strings.xml")
+    def androidStringStart(self, key):
+        return ANDROID_STRING_START + key + ANDROID_KEY_END 
     
-    def checkDirectoryExist(self, directory):
-        return os.path.exists(directory)
+    def writeTranslation(self, path, seperator, lang, value):
+        directoryName = os.path.join(path + seperator + lang)
+        if not checkDirectoryOrFileExist(directoryName):
+            print("directory not exist", directoryName)
+            os.mkdir(directory)
+            createFile(directory, "strings.xml")
+    
+    def checkDirectoryOrFileExist(self, path):
+        return os.path.exists(path)
     
     def createFile(self, directory, filename):
-        f = open(directory+"/"+filename, "w+")
+        fileName = s.path.join(directory, filename)
+        #if not checkDirectoryOrFileExist(fileName)
+        f = open(fileName, "w+")
         f.close()
 
 
@@ -61,8 +80,6 @@ class Android():
     
     def __init__(self):
         print("android initialze")
-        #self.helper.createDirectory("abc", "ID")
-    
     
     def initialize(self):
         if not self.helper.isFileEmpty():
@@ -88,7 +105,6 @@ class Main:
         
 
 """
-class ios:
 
 helper = Helper()
 helper.createDirectory("valu", "")
