@@ -1,32 +1,6 @@
 import pandas as pd
 import os
 import sys
-"""
-missing_values = ["n/a","","NaN"]
-
-
-translation = pd.read_excel(r'translation.xlsx', na_values = missing_values)
-X = translation.iloc[:]
-print(X)
-print("----------------")
-print(X.columns)
-for i in X.columns:
-    print(i)
-#print(X)
-#translation = translation.loc[:, ~translation.columns.str.contains('^Unnamed')]
-
-#print(translation)
-
-
-#print(translation.columns)
-
-#print(len(translation))
-check 
-#for i, j in X.iterrows(): 
-#  if not j.empty:
-#       print(i, j)
-#       print() 
-"""
         
 class Helper:
         
