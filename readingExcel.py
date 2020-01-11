@@ -9,7 +9,7 @@ import pandas as pd
 translation = pd.read_excel(r'translation.xlsx')
 """
 excel = pd.read_excel(r'translation.xlsx')
-
+print(excel)
 #key_column = excel['key']
 #print(key_column)
 
