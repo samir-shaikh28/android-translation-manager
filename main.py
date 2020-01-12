@@ -44,6 +44,16 @@ class Helper:
     def checkDirectoryOrFileExist(self, path):
         return os.path.exists(path)
     
+    def checkIfKeyAleadyPresent(self, stringList, key):
+        if any(key in s for s in stringList):
+            elem =  [s for s in stringList if key in s]
+            print("ele,", elem)
+            return True
+            #return stringList.index(elem)
+        else:
+            return False
+            #return -1
+    
     def createFile(self, directory, fileName, lang, value):
         self.stringFile = os.path.join(directory, fileName)
         #if not checkDirectoryOrFileExist(fileName)
@@ -53,6 +63,7 @@ class Helper:
             print("append string file:", self.stringFile)
             f = open(self.stringFile, append_write)
             fileData = f.readlines()
+            isPresent = self.checkIfKeyAleadyPresent(fileData, self.storeKey)
             secondLastLineNumber = len(fileData) - 2
             print(fileData)
             print("number:",secondLastLineNumber )
@@ -60,7 +71,12 @@ class Helper:
             f.close()
             f = open(self.stringFile, "a+")
             newTranslationLine = self.ANDROID_STRING_START + self.storeKey + self.ANDROID_KEY_END + value  + self.ANDROID_STRING_END + self.NEW_LINE
-            fileData.insert(secondLastLineNumber, newTranslationLine)
+            if isPresent:
+                pass
+                #fileData[elemIndex] = newTranslationLine
+             #   elemIndex = -1
+            else:    
+                fileData.insert(secondLastLineNumber, newTranslationLine)
             f.writelines(fileData)
             f.close()
 
@@ -103,10 +119,3 @@ class Main:
         print("passed param is ios")
     else:
         print("Please recheck the parameter's")
-        
-
-"""
-
-helper = Helper()
-helper.createDirectory("valu", "")
-helper.createFile("valu-", "string.xml")"""
