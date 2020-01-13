@@ -15,5 +15,11 @@ This Script read from Excel file and create values folder for each languge and w
 
 <B> Sample Excel File: </B>
 ![Excel File Format](excel_file.png)
+<br />
+
+</UL>
+
+<B> license: </B>
+[![license](LICENSE.txt)]
 
 
