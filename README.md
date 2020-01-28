@@ -3,7 +3,7 @@
 
 This Script read from Excel file and create values folder for each languge and write translation in string.xml from Excel file.
 
-<B>Command: </B> <pre> py main.py android </pre>
+<B>Command: </B> <pre> python main.py android </pre>
 
 <B> How it works: </B>
 <UL>
